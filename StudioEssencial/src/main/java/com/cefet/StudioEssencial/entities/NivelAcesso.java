@@ -1,6 +1,7 @@
 package com.cefet.StudioEssencial.entities;
 
-public enum Tipo {
+public enum NivelAcesso {
     FUNCIONARIO,
     CLIENTE
 }
+

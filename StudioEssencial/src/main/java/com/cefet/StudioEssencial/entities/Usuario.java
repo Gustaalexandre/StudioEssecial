@@ -24,17 +24,17 @@ public class Usuario {
     
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo", nullable = false)
-    private Tipo tipo;
+    private NivelAcesso nivelAcesso;
 
     // private Pessoa pessoa;
 
     public Usuario(){}
 
-    public Usuario(Long id, String login, String senha, Tipo tipo){
+    public Usuario(Long id, String login, String senha, NivelAcesso nivelAcesso){
         this.id = id;
         this.login = login;
         this.senha = senha;
-        this.tipo = tipo;
+        this.nivelAcesso = nivelAcesso;
     }
 
     public Long getId() {
@@ -61,12 +61,12 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public Tipo getTipo() {
-        return tipo;
+    public NivelAcesso getNivelAcesso() {
+        return nivelAcesso;
     }
 
-    public void setTipo(Tipo tipo) {
-        this.tipo = tipo;
+    public void setNivelAcesso(NivelAcesso nivelAcesso) {
+        this.nivelAcesso = nivelAcesso;
     }
 
     @Override
@@ -76,7 +76,7 @@ public class Usuario {
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((login == null) ? 0 : login.hashCode());
         result = prime * result + ((senha == null) ? 0 : senha.hashCode());
-        result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+        result = prime * result + ((nivelAcesso == null) ? 0 : nivelAcesso.hashCode());
         return result;
     }
 
@@ -104,10 +104,13 @@ public class Usuario {
                 return false;
         } else if (!senha.equals(other.senha))
             return false;
-        if (tipo != other.tipo)
+        if (nivelAcesso != other.nivelAcesso)
             return false;
         return true;
     }
+
+
+
 
    
 
