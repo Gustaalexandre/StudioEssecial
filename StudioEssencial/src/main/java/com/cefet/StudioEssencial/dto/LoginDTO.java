@@ -20,6 +20,4 @@ public class LoginDTO {
         return senha;
     }
 
-    
-
 }

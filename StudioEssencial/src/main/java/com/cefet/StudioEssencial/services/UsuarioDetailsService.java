@@ -9,7 +9,6 @@ import com.cefet.StudioEssencial.entities.Usuario;
 import com.cefet.StudioEssencial.repositories.UsuarioRepository;
 import com.cefet.StudioEssencial.security.UsuarioDetails;
 
-
 @Service
 public class UsuarioDetailsService implements UserDetailsService {
 

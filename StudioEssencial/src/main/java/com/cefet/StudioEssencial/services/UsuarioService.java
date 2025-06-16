@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.cefet.StudioEssencial.entities.Usuario;
 import com.cefet.StudioEssencial.repositories.UsuarioRepository;
 
-
 @Service
 public class UsuarioService {
     private final UsuarioRepository usuarioRepository;

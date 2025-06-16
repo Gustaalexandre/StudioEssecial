@@ -8,11 +8,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.springframework.security.core.Authentication;
 import com.cefet.StudioEssencial.dto.JwtAuthenticationDTO;
 import com.cefet.StudioEssencial.dto.LoginDTO;
 import com.cefet.StudioEssencial.security.JwtTokenProvider;
-
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 

@@ -21,6 +21,7 @@ public class Pessoa {
     @Column(nullable = false)
     private char sexo;
 
+    @Column(nullable = false)
     private String endereco;
 
     public Pessoa(){

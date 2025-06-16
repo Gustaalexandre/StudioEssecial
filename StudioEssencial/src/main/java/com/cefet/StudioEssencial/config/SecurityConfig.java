@@ -13,7 +13,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
 import com.cefet.StudioEssencial.security.JwtAuthenticationFilter;
 import com.cefet.StudioEssencial.services.UsuarioDetailsService;
 
@@ -42,30 +41,12 @@ public class SecurityConfig {
                                                                                                               // UI
                         .requestMatchers(HttpMethod.POST, "/usuarios").permitAll() // Permitir criação de usuário
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll() // Permitir endpoint de login
-                        // Regras de Autorização para Pessoas
-                        .requestMatchers(HttpMethod.GET, "/pessoas").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/pessoas/{id}").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/pessoas").permitAll()
-                        .requestMatchers(HttpMethod.PUT, "/pessoas/**").hasAnyRole("FUNCIONARIO")
-                        .requestMatchers(HttpMethod.DELETE, "/pessoas/**").hasRole("FUNCIONARIO")
-                        // .requestMatchers(HttpMethod.GET, "/eventos").hasAnyRole("ADMIN") // Regras de
-                        // Autorização para
-                        // // Eventos
-                        // .requestMatchers(HttpMethod.GET, "/eventos/{id}").hasAnyRole("ADMIN")
-                        // .requestMatchers(HttpMethod.POST, "/eventos").hasAnyRole("ADMIN")
-                        // .requestMatchers(HttpMethod.PUT, "/eventos/**").hasAnyRole("ADMIN")
-                        // .requestMatchers(HttpMethod.DELETE, "/eventos/**").hasRole("ADMIN")
-                        // .requestMatchers(HttpMethod.GET, "/ingressos").hasAnyRole("ADMIN") // Regras
-                        // de Autorização para
-                        // // Ingressos
-                        // .requestMatchers(HttpMethod.GET, "/ingressos/{id}").hasAnyRole("GESTOR",
-                        // "ADMIN")
-                        // // .requestMatchers(HttpMethod.POST, "/ingressos").hasAnyRole("GESTOR",
-                        // "ADMIN")
-                        // .requestMatchers(HttpMethod.POST, "/ingressos").permitAll()
-                        // .requestMatchers(HttpMethod.PUT, "/ingressos/**").hasAnyRole("GESTOR",
-                        // "ADMIN")
-                        // .requestMatchers(HttpMethod.DELETE, "/ingressos/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/pessoas").hasAnyRole("ADMIN") // Regras de Autorização para
+                                                                                          // Clientes
+                        .requestMatchers(HttpMethod.GET, "/pessoas/{id}").hasAnyRole("GESTOR", "ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/pessoas").hasAnyRole("GESTOR", "ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/pessoas/**").hasAnyRole("GESTOR", "ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/pessoas/**").hasRole("ADMIN")
                         .anyRequest().authenticated() // Todos os outros endpoints exigem autenticação
                 )
                 .headers(headers -> headers.frameOptions().disable()) // Para H2 Console

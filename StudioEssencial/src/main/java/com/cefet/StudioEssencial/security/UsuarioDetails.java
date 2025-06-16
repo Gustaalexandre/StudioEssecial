@@ -8,8 +8,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.cefet.StudioEssencial.entities.Usuario;
-
-
  
 public class UsuarioDetails implements UserDetails {
     private final Usuario usuario;

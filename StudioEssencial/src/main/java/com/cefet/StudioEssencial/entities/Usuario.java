@@ -16,21 +16,20 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true, nullable = false)
     private String login;
 
     @Column(nullable = false)
     private String senha;
-    
+
     @Enumerated(EnumType.STRING)
-    @Column(name = "tipo", nullable = false)
+    @Column(name = "nivel_acesso", nullable = false)
     private NivelAcesso nivelAcesso;
 
-    // private Pessoa pessoa;
+    public Usuario() {
+    }
 
-    public Usuario(){}
-
-    public Usuario(Long id, String login, String senha, NivelAcesso nivelAcesso){
+    public Usuario(Long id, String login, String senha, NivelAcesso nivelAcesso) {
         this.id = id;
         this.login = login;
         this.senha = senha;
@@ -109,14 +108,4 @@ public class Usuario {
         return true;
     }
 
-
-
-
-   
-
-
-
- 
-
-    
 }
