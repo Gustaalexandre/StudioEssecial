@@ -42,7 +42,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/usuarios").permitAll() // Permitir criação de usuário
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll() // Permitir endpoint de login
                         .requestMatchers(HttpMethod.GET, "/pessoas").hasAnyRole("ADMIN") // Regras de Autorização para
-                                                                                          // Clientes
+                                                                                          // Pessoas
                         .requestMatchers(HttpMethod.GET, "/pessoas/{id}").hasAnyRole("GESTOR", "ADMIN")
                         .requestMatchers(HttpMethod.POST, "/pessoas").hasAnyRole("GESTOR", "ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/pessoas/**").hasAnyRole("GESTOR", "ADMIN")
