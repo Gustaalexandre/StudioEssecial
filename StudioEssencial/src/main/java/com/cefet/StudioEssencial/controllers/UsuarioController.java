@@ -14,7 +14,6 @@ import com.cefet.StudioEssencial.dto.UsuarioDTO;
 import com.cefet.StudioEssencial.entities.Usuario;
 import com.cefet.StudioEssencial.services.UsuarioService;
 
-
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {

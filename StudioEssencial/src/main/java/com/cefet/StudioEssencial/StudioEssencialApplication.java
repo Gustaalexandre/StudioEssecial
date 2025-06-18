@@ -9,5 +9,4 @@ public class StudioEssencialApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(StudioEssencialApplication.class, args);
 	}
-
 }

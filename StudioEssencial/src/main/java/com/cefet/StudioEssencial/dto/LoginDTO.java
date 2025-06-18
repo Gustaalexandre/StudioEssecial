@@ -19,5 +19,4 @@ public class LoginDTO {
     public String getSenha() {
         return senha;
     }
-
 }

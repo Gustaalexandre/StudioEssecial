@@ -33,5 +33,4 @@ public class PessoaDTO {
     public String getEndereco() {
         return endereco;
     }
-
 }

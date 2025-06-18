@@ -27,7 +27,6 @@ public class Pessoa {
     public Pessoa(){
     }
 
-
     public Pessoa(Long id, String nome, char sexo, String endereco){
         this.id = id;
         this.nome = nome;
@@ -35,46 +34,37 @@ public class Pessoa {
         this.endereco = endereco;
     }
 
-
     public Long getId() {
         return id;
     }
-
 
     public void setId(Long id) {
         this.id = id;
     }
 
-
     public String getNome() {
         return nome;
     }
-
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-
     public char getSexo() {
         return sexo;
     }
-
 
     public void setSexo(char sexo) {
         this.sexo = sexo;
     }
 
-
     public String getEndereco() {
         return endereco;
     }
 
-
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-
 
     @Override
     public int hashCode() {
@@ -86,7 +76,6 @@ public class Pessoa {
         result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
         return result;
     }
-
 
     @Override
     public boolean equals(Object obj) {
@@ -116,7 +105,4 @@ public class Pessoa {
             return false;
         return true;
     }
-
-    
-
 }

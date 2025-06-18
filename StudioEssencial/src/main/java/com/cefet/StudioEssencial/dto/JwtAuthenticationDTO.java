@@ -18,6 +18,4 @@ public class JwtAuthenticationDTO {
     public String getTokenType() {
         return tokenType;
     }
-
-    
 }

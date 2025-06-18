@@ -28,8 +28,5 @@ public class UsuarioDTO {
 
     public NivelAcesso getNivelAcesso() {
         return nivelAcesso;
-    }   
-
-    
-
+    }
 }
