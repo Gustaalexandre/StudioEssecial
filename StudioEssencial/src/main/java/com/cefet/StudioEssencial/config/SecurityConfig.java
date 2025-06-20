@@ -29,10 +29,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/h2-console/**", "/usuarios/**", "/auth/login") // Ignorar CSRF para
-                                                                                                  // esses endpoints
-                )
+            //Desabilita verificação CSRF para permitir POST com token JWT
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/h2-console/**").permitAll() // Acesso ao H2 Console
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll() // Acesso
@@ -41,12 +39,13 @@ public class SecurityConfig {
                                                                                                               // UI
                         .requestMatchers(HttpMethod.POST, "/usuarios").permitAll() // Permitir criação de usuário
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll() // Permitir endpoint de login
-                        .requestMatchers(HttpMethod.GET, "/pessoas").hasAnyRole("ADMIN") // Regras de Autorização para
+                        .requestMatchers(HttpMethod.GET, "/pessoas").hasAnyRole("FUNCIONARIO") // Regras de Autorização para
                                                                                           // Pessoas
-                        .requestMatchers(HttpMethod.GET, "/pessoas/{id}").hasAnyRole("GESTOR", "ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/pessoas").hasAnyRole("GESTOR", "ADMIN")
-                        .requestMatchers(HttpMethod.PUT, "/pessoas/**").hasAnyRole("GESTOR", "ADMIN")
-                        .requestMatchers(HttpMethod.DELETE, "/pessoas/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/pessoas/{id}").hasAnyRole("CLIENTE", "FUNCIONARIO")
+                        .requestMatchers(HttpMethod.POST, "/pessoas").hasAnyRole("FUNCIONARIO", "CLIENTE")
+                        .requestMatchers(HttpMethod.PUT, "/pessoas/**").hasAnyRole("CLIENTE", "FUNCIONARIO")
+                        .requestMatchers(HttpMethod.DELETE, "/pessoas/**").hasRole("FUNCIONARIO")
+                        .requestMatchers(HttpMethod.GET, "/procedimentos").hasAnyRole("FUNCIONARIO")
                         .anyRequest().authenticated() // Todos os outros endpoints exigem autenticação
                 )
                 .headers(headers -> headers.frameOptions().disable()) // Para H2 Console
