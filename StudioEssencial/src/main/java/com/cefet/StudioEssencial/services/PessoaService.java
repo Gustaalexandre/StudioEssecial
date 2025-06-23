@@ -26,7 +26,7 @@ public class PessoaService {
     // Buscar por ID
     public PessoaDTO findById(Long id) {
         Pessoa pessoa = pessoaRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Pessoa não encontrado com ID: " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Pessoa não encontrada com ID: " + id));
         return new PessoaDTO(pessoa);
     }
 
@@ -43,7 +43,7 @@ public class PessoaService {
     // Atualizar Pessoa
     public PessoaDTO update(Long id, PessoaDTO novaPessoaDTO) {
         Pessoa pessoa = pessoaRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Pessoa não encontrado com ID: " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Pessoa não encontrada com ID: " + id));
         pessoa.setNome(novaPessoaDTO.getNome());
         pessoa.setSexo(novaPessoaDTO.getSexo());
         pessoa.setEndereco(novaPessoaDTO.getEndereco());
@@ -54,7 +54,7 @@ public class PessoaService {
     // Remover por ID
     public void delete(Long id) {
         if (!pessoaRepository.existsById(id)) {
-            throw new EntityNotFoundException("Tipo não encontrado com ID: " + id);
+            throw new EntityNotFoundException("Pessoa não encontrada com ID: " + id);
         }
         pessoaRepository.deleteById(id);
     }

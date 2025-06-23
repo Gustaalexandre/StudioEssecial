@@ -10,7 +10,6 @@ public class UsuarioDTO {
     private Long pessoaId;
 
     public UsuarioDTO(){
-
     }
 
     public UsuarioDTO(Usuario usuario){
@@ -35,8 +34,4 @@ public class UsuarioDTO {
     public Long getPessoaId() {
         return pessoaId;
     }
-
-
-
-    
 }

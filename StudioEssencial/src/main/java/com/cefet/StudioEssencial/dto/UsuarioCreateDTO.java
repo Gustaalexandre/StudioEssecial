@@ -11,7 +11,6 @@ public class UsuarioCreateDTO {
     private Long pessoaId;
 
     public UsuarioCreateDTO(){
-
     }
 
     public UsuarioCreateDTO(Usuario usuario){
@@ -40,7 +39,5 @@ public class UsuarioCreateDTO {
 
     public String getSenha() {
         return senha;
-    }
-
-    
+    } 
 }

@@ -12,7 +12,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb_usuario")
+@Table(name = "tbUsuario")
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,11 +25,11 @@ public class Usuario {
     private String senha;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "nivel_acesso", nullable = false)
+    @Column(name = "nivelAcesso", nullable = false)
     private NivelAcesso nivelAcesso;
 
     @OneToOne
-    @JoinColumn(name = "pessoa_id")
+    @JoinColumn(name = "pessoaId")
     private Pessoa pessoa;
 
     public Usuario() {
@@ -128,6 +128,4 @@ public class Usuario {
             return false;
         return true;
     }
-
-    
 }

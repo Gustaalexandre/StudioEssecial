@@ -37,6 +37,4 @@ public class UsuarioController {
     public List<UsuarioDTO> listarUsuarios(){
         return usuarioService.listarUsuarios().stream().map(UsuarioDTO::new).toList();
     }
-
-    
 }
