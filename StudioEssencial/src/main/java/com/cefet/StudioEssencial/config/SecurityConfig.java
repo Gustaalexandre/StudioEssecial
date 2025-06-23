@@ -41,9 +41,9 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll() // Permitir endpoint de login
                         .requestMatchers(HttpMethod.GET, "/pessoas").hasAnyRole("FUNCIONARIO") // Regras de Autorização para
                                                                                           // Pessoas
-                        .requestMatchers(HttpMethod.GET, "/pessoas/{id}").hasAnyRole("CLIENTE", "FUNCIONARIO")
-                        .requestMatchers(HttpMethod.POST, "/pessoas").hasAnyRole("FUNCIONARIO", "CLIENTE")
-                        .requestMatchers(HttpMethod.PUT, "/pessoas/**").hasAnyRole("CLIENTE", "FUNCIONARIO")
+                        .requestMatchers(HttpMethod.GET, "/pessoas/{id}").hasAnyRole("FUNCIONARIO")
+                        .requestMatchers(HttpMethod.POST, "/pessoas").hasAnyRole("FUNCIONARIO")
+                        .requestMatchers(HttpMethod.PUT, "/pessoas/**").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.DELETE, "/pessoas/**").hasRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.GET, "/procedimentos").hasAnyRole("FUNCIONARIO")
                         .anyRequest().authenticated() // Todos os outros endpoints exigem autenticação

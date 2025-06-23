@@ -7,6 +7,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,14 +28,19 @@ public class Usuario {
     @Column(name = "nivel_acesso", nullable = false)
     private NivelAcesso nivelAcesso;
 
+    @OneToOne
+    @JoinColumn(name = "pessoa_id")
+    private Pessoa pessoa;
+
     public Usuario() {
     }
 
-    public Usuario(Long id, String login, String senha, NivelAcesso nivelAcesso) {
+    public Usuario(Long id, String login, String senha, NivelAcesso nivelAcesso, Pessoa pessoa) {
         this.id = id;
         this.login = login;
         this.senha = senha;
         this.nivelAcesso = nivelAcesso;
+        this.pessoa = pessoa;
     }
 
     public Long getId() {
@@ -68,6 +75,14 @@ public class Usuario {
         this.nivelAcesso = nivelAcesso;
     }
 
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -76,6 +91,7 @@ public class Usuario {
         result = prime * result + ((login == null) ? 0 : login.hashCode());
         result = prime * result + ((senha == null) ? 0 : senha.hashCode());
         result = prime * result + ((nivelAcesso == null) ? 0 : nivelAcesso.hashCode());
+        result = prime * result + ((pessoa == null) ? 0 : pessoa.hashCode());
         return result;
     }
 
@@ -105,6 +121,13 @@ public class Usuario {
             return false;
         if (nivelAcesso != other.nivelAcesso)
             return false;
+        if (pessoa == null) {
+            if (other.pessoa != null)
+                return false;
+        } else if (!pessoa.equals(other.pessoa))
+            return false;
         return true;
     }
+
+    
 }

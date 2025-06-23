@@ -3,19 +3,21 @@ package com.cefet.StudioEssencial.dto;
 import com.cefet.StudioEssencial.entities.NivelAcesso;
 import com.cefet.StudioEssencial.entities.Usuario;
 
-public class UsuarioDTO {
+public class UsuarioCreateDTO {
     private Long id;
     private String login;
+    private String senha;
     private NivelAcesso nivelAcesso;
     private Long pessoaId;
 
-    public UsuarioDTO(){
+    public UsuarioCreateDTO(){
 
     }
 
-    public UsuarioDTO(Usuario usuario){
+    public UsuarioCreateDTO(Usuario usuario){
         this.id = usuario.getId();
         this.login = usuario.getLogin();
+        this.senha = usuario.getSenha();
         this.nivelAcesso = usuario.getNivelAcesso();
         this.pessoaId = usuario.getPessoa().getId();
     }
@@ -36,7 +38,9 @@ public class UsuarioDTO {
         return pessoaId;
     }
 
-
+    public String getSenha() {
+        return senha;
+    }
 
     
 }
