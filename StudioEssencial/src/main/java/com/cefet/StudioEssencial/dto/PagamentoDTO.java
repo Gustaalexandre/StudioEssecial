@@ -2,7 +2,6 @@ package com.cefet.StudioEssencial.dto;
 
 import java.time.LocalDate;
 
-import com.cefet.StudioEssencial.entities.Agendamento;
 import com.cefet.StudioEssencial.entities.Pagamento;
 
 public class PagamentoDTO {
@@ -55,5 +54,4 @@ public class PagamentoDTO {
     public long getAgendamentoId() {
         return agendamentoId;
     }
-
 }
