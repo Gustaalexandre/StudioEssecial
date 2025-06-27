@@ -11,6 +11,8 @@ public class AgendamentoDTO {
     private String situacao;
     private long pessoaId;
     private long procedimentoId;
+    private int numeroParcelas;
+    private double valorTotal;
 
     public AgendamentoDTO() {
     }
@@ -21,6 +23,8 @@ public class AgendamentoDTO {
         this.situacao = agendamento.getSituacao();
         this.pessoaId = agendamento.getPessoa().getId();
         this.procedimentoId = agendamento.getProcedimento().getId();
+        this.numeroParcelas = agendamento.getNumeroParcelas();
+        this.valorTotal = agendamento.getValorTotal();
     }
 
     public Long getId() {
@@ -41,5 +45,13 @@ public class AgendamentoDTO {
 
     public long getProcedimentoId() {
         return procedimentoId;
+    }
+
+    public int getNumeroParcelas() {
+        return numeroParcelas;
+    }
+
+    public double getValorTotal() {
+        return valorTotal;
     }
 }

@@ -39,6 +39,12 @@ public class Agendamento {
     @Column(nullable = false)
     private String situacao;
 
+    @Column(nullable = false)
+    private int numeroParcelas;
+
+    @Column(nullable = false)
+    private double valorTotal;
+
     public Agendamento() {
     }
 
@@ -106,6 +112,22 @@ public class Agendamento {
 
     public void setSituacao(String situacao) {
         this.situacao = situacao;
+    }
+
+    public int getNumeroParcelas() {
+        return numeroParcelas;
+    }
+
+    public void setNumeroParcelas(int numeroParcelas) {
+        this.numeroParcelas = numeroParcelas;
+    }
+
+    public double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
     }
 
     @Override
