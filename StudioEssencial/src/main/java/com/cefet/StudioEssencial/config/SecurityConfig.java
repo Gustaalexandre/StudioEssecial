@@ -29,7 +29,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            //Desabilita verificação CSRF para permitir POST com token JWT
+                // Desabilita verificação CSRF para permitir POST com token JWT
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/h2-console/**").permitAll() // Acesso ao H2 Console
@@ -39,24 +39,34 @@ public class SecurityConfig {
                                                                                                               // UI
                         .requestMatchers(HttpMethod.POST, "/usuarios").permitAll() // Permitir criação de usuário
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll() // Permitir endpoint de login
-                        .requestMatchers(HttpMethod.GET, "/pessoas").hasAnyRole("FUNCIONARIO") // Regras de Autorização para
+                        .requestMatchers(HttpMethod.GET, "/pessoas").hasAnyRole("FUNCIONARIO") // Regras de Autorização
+                                                                                               // para
                         // Pessoas
                         .requestMatchers(HttpMethod.GET, "/pessoas/{id}").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.POST, "/pessoas").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.PUT, "/pessoas/**").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.DELETE, "/pessoas/**").hasRole("FUNCIONARIO")
-                        .requestMatchers(HttpMethod.GET, "/procedimentos").hasAnyRole("FUNCIONARIO") //Regras de Autorização para 
-                        //Procedimento
+                        .requestMatchers(HttpMethod.GET, "/procedimentos").hasAnyRole("FUNCIONARIO") // Regras de
+                                                                                                     // Autorização para
+                        // Procedimento
                         .requestMatchers(HttpMethod.GET, "/procedimentos/{id}").hasAnyRole("FUNCIONARIO", "CLIENTE")
                         .requestMatchers(HttpMethod.POST, "/procedimentos").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.PUT, "/procedimentos/**").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.DELETE, "/procedimentos/**").hasAnyRole("FUNCIONARIO")
-                        .requestMatchers(HttpMethod.GET, "/telefones").hasAnyRole("FUNCIONARIO") //Regras de Autorização para
-                        //Telefones
+                        .requestMatchers(HttpMethod.GET, "/telefones").hasAnyRole("FUNCIONARIO") // Regras de
+                                                                                                 // Autorização para
+                        // Telefones
                         .requestMatchers(HttpMethod.GET, "/telefones{id}").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.POST, "/telefones").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.PUT, "/telefones/**").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.DELETE, "/telefones/**").hasAnyRole("FUNCIONARIO")
+                        .requestMatchers(HttpMethod.GET, "/agendamentos").hasAnyRole("FUNCIONARIO") // Regras de
+                                                                                                    // Autorização para
+                        // Agendamento
+                        .requestMatchers(HttpMethod.GET, "/agendamentos{id}").hasAnyRole("FUNCIONARIO")
+                        .requestMatchers(HttpMethod.POST, "/agendamentos").hasAnyRole("FUNCIONARIO")
+                        .requestMatchers(HttpMethod.PUT, "/agendamentos/**").hasAnyRole("FUNCIONARIO")
+                        .requestMatchers(HttpMethod.DELETE, "/agendamentos/**").hasAnyRole("FUNCIONARIO")
                         .anyRequest().authenticated() // Todos os outros endpoints exigem autenticação
                 )
                 .headers(headers -> headers.frameOptions().disable()) // Para H2 Console
