@@ -56,17 +56,27 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/telefones").hasAnyRole("FUNCIONARIO") // Regras de
                                                                                                  // Autorização para
                         // Telefones
-                        .requestMatchers(HttpMethod.GET, "/telefones{id}").hasAnyRole("FUNCIONARIO")
+                        .requestMatchers(HttpMethod.GET, "/telefones/{id}").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.POST, "/telefones").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.PUT, "/telefones/**").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.DELETE, "/telefones/**").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.GET, "/agendamentos").hasAnyRole("FUNCIONARIO") // Regras de
                                                                                                     // Autorização para
                         // Agendamento
-                        .requestMatchers(HttpMethod.GET, "/agendamentos{id}").hasAnyRole("FUNCIONARIO")
+                        .requestMatchers(HttpMethod.GET, "/agendamentos/{id}").hasAnyRole("FUNCIONARIO")
+                        .requestMatchers(HttpMethod.GET, "/agendamentos/pessoas/{pessoaId}").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.POST, "/agendamentos").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.PUT, "/agendamentos/**").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.DELETE, "/agendamentos/**").hasAnyRole("FUNCIONARIO")
+                        .requestMatchers(HttpMethod.GET, "/pagamentos").hasAnyRole("FUNCIONARIO") // Regras de
+                                                                                                  // Autorização para
+                        // Pagamento
+                        .requestMatchers(HttpMethod.GET, "/pagamentos/{id}").hasAnyRole("FUNCIONARIO")
+                        .requestMatchers(HttpMethod.GET, "/pagamentos/agendamentos/{agendamentoId}")
+                        .hasAnyRole("FUNCIONARIO")
+                        .requestMatchers(HttpMethod.POST, "/pagamentos").hasAnyRole("FUNCIONARIO")
+                        .requestMatchers(HttpMethod.PUT, "/pagamentos/**").hasAnyRole("FUNCIONARIO")
+                        .requestMatchers(HttpMethod.DELETE, "/pagamentos/**").hasAnyRole("FUNCIONARIO")
                         .anyRequest().authenticated() // Todos os outros endpoints exigem autenticação
                 )
                 .headers(headers -> headers.frameOptions().disable()) // Para H2 Console
