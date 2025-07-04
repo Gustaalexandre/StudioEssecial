@@ -51,5 +51,4 @@ public class PagamentoController {
         List<PagamentoDTO> pagamentos = pagamentoService.findByAgendamento(agendamentoId);
         return ResponseEntity.ok(pagamentos);
     }
-
 }

@@ -51,5 +51,4 @@ public class AgendamentoController {
         List<AgendamentoDTO> agendamentos = agendamentoService.findByPessoa(pessoaId);
         return ResponseEntity.ok(agendamentos);
     }
-
 }

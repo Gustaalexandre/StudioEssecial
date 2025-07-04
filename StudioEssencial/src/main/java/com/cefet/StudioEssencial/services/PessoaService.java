@@ -17,7 +17,7 @@ public class PessoaService {
     @Autowired
     private PessoaRepository pessoaRepository;
 
-    // Buscar todos as pessoas
+    // Buscar todas as pessoas
     public List<PessoaDTO> findAll() {
         List<Pessoa> listaPessoa = pessoaRepository.findAll();
         return listaPessoa.stream().map(PessoaDTO::new).toList();

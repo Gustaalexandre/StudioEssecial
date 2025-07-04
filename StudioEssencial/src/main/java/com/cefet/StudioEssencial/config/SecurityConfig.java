@@ -48,7 +48,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "/pessoas/**").hasRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.GET, "/procedimentos").hasAnyRole("FUNCIONARIO") // Regras de
                                                                                                      // Autorização para
-                        // Procedimento
+                        // Procedimentos
                         .requestMatchers(HttpMethod.GET, "/procedimentos/{id}").hasAnyRole("FUNCIONARIO", "CLIENTE")
                         .requestMatchers(HttpMethod.POST, "/procedimentos").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.PUT, "/procedimentos/**").hasAnyRole("FUNCIONARIO")
@@ -62,7 +62,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "/telefones/**").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.GET, "/agendamentos").hasAnyRole("FUNCIONARIO") // Regras de
                                                                                                     // Autorização para
-                        // Agendamento
+                        // Agendamentos
                         .requestMatchers(HttpMethod.GET, "/agendamentos{id}").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.POST, "/agendamentos").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.PUT, "/agendamentos/**").hasAnyRole("FUNCIONARIO")

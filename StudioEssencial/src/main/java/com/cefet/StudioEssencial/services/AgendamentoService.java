@@ -6,15 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cefet.StudioEssencial.dto.AgendamentoDTO;
-import com.cefet.StudioEssencial.dto.ProcedimentoDTO;
 import com.cefet.StudioEssencial.entities.Agendamento;
 import com.cefet.StudioEssencial.entities.Pessoa;
-import com.cefet.StudioEssencial.entities.Procedimento;
 import com.cefet.StudioEssencial.repositories.AgendamentoRepository;
 import com.cefet.StudioEssencial.repositories.PessoaRepository;
 import com.cefet.StudioEssencial.repositories.ProcedimentoRepository;
-import com.cefet.StudioEssencial.repositories.TelefoneRepository;
-
 import jakarta.persistence.EntityNotFoundException;
 
 @Service
@@ -49,7 +45,6 @@ public class AgendamentoService {
                 agendamento.setNumeroParcelas(agendamentoDTO.getNumeroParcelas());
                 agendamento.setValorTotal(agendamentoDTO.getValorTotal());
 
-                // Corrigido: buscar pessoa e procedimento pelo ID
                 agendamento.setPessoa(
                                 pessoaRepository.findById(agendamentoDTO.getPessoaId())
                                                 .orElseThrow(() -> new EntityNotFoundException(
@@ -65,7 +60,7 @@ public class AgendamentoService {
                 return new AgendamentoDTO(agendamentoSalvo);
         }
 
-        // Atualizar Pessoa
+        // Atualizar Agendamento
         public AgendamentoDTO update(Long id, AgendamentoDTO novoAgendamentoDTO) {
                 Agendamento agendamento = agendamentoRepository.findById(id)
                                 .orElseThrow(() -> new EntityNotFoundException(
@@ -74,7 +69,7 @@ public class AgendamentoService {
                 agendamento.setSituacao(novoAgendamentoDTO.getSituacao());
                 agendamento.setNumeroParcelas(novoAgendamentoDTO.getNumeroParcelas());
                 agendamento.setValorTotal(novoAgendamentoDTO.getValorTotal());
-                // Corrigido: buscar pessoa e procedimento pelo ID
+
                 agendamento.setPessoa(
                                 pessoaRepository.findById(novoAgendamentoDTO.getPessoaId())
                                                 .orElseThrow(() -> new EntityNotFoundException(
@@ -108,5 +103,4 @@ public class AgendamentoService {
                                 .map(AgendamentoDTO::new)
                                 .toList();
         }
-
 }

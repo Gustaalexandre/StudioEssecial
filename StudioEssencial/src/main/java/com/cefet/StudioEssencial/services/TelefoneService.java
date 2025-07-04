@@ -34,7 +34,7 @@ public class TelefoneService {
         return new TelefoneDTO(telefone);
     }
 
-    // Inserir Pessoa
+    // Inserir Telefone
     public TelefoneDTO insert(TelefoneDTO telefoneDTO) {
         Telefone telefone = new Telefone();
         Pessoa pessoa = pessoaRepository.findById(telefoneDTO.getPessoaId())
@@ -45,7 +45,7 @@ public class TelefoneService {
         return new TelefoneDTO(telefoneSalvo);
     }
 
-    // Atualizar Pessoa
+    // Atualizar Telefone
     public TelefoneDTO update(Long id, TelefoneDTO novoTelefoneDTO) {
         Telefone telefone = telefoneRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Telefone não encontrado com ID: " + id));
