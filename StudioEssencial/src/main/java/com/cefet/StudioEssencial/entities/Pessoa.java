@@ -10,8 +10,8 @@ import jakarta.persistence.Column;
 @Entity
 @Table(name = "tbPessoa")
 public class Pessoa {
-    
-    @Id 
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -24,10 +24,10 @@ public class Pessoa {
     @Column(nullable = false)
     private String endereco;
 
-    public Pessoa(){
+    public Pessoa() {
     }
 
-    public Pessoa(Long id, String nome, char sexo, String endereco){
+    public Pessoa(Long id, String nome, char sexo, String endereco) {
         this.id = id;
         this.nome = nome;
         this.sexo = sexo;
