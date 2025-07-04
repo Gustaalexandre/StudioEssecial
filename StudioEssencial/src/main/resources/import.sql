@@ -1,1 +1,1 @@
-INSERT INTO tbPessoa(nome, sexo, endereco) VALUES ('Pessoa A', 'm', 'Rua A, 190, Canaa, Ipatinga-MG'), ('Pessoa B', 'f', 'Rua B, 130, Bethania, Ipatinga-MG'), ('Pessoa C', 'm', 'Rua C, 230, Esperança, Ipatinga-MG');
+INSERT INTO tb_pessoa(nome, sexo, endereco) VALUES ('Pessoa A', 'm', 'Rua A, 190, Canaa, Ipatinga-MG'), ('Pessoa B', 'f', 'Rua B, 130, Bethania, Ipatinga-MG'), ('Pessoa C', 'm', 'Rua C, 230, Esperança, Ipatinga-MG');
