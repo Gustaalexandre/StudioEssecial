@@ -49,65 +49,68 @@ public class Agendamento {
     }
 
     public Agendamento(long id, Pessoa pessoa, Procedimento procedimento, String nmProduto, int quantidade,
-            String situacao) {
+            LocalDate data, String situacao, int numeroParcelas, double valorTotal) {
         this.id = id;
         this.pessoa = pessoa;
         this.procedimento = procedimento;
         this.nmProduto = nmProduto;
         this.quantidade = quantidade;
+        this.data = data;
         this.situacao = situacao;
+        this.numeroParcelas = numeroParcelas;
+        this.valorTotal = valorTotal;
     }
 
     public long getId() {
         return id;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
-
-    public Procedimento getProcedimento() {
-        return procedimento;
-    }
-
-    public String getNmProduto() {
-        return nmProduto;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public LocalDate getData() {
-        return data;
-    }
-
-    public String getSituacao() {
-        return situacao;
-    }
-
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
     }
 
+    public Procedimento getProcedimento() {
+        return procedimento;
+    }
+
     public void setProcedimento(Procedimento procedimento) {
         this.procedimento = procedimento;
+    }
+
+    public String getNmProduto() {
+        return nmProduto;
     }
 
     public void setNmProduto(String nmProduto) {
         this.nmProduto = nmProduto;
     }
 
+    public int getQuantidade() {
+        return quantidade;
+    }
+
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
 
+    public LocalDate getData() {
+        return data;
+    }
+
     public void setData(LocalDate data) {
         this.data = data;
+    }
+
+    public String getSituacao() {
+        return situacao;
     }
 
     public void setSituacao(String situacao) {
@@ -139,7 +142,12 @@ public class Agendamento {
         result = prime * result + ((procedimento == null) ? 0 : procedimento.hashCode());
         result = prime * result + ((nmProduto == null) ? 0 : nmProduto.hashCode());
         result = prime * result + quantidade;
+        result = prime * result + ((data == null) ? 0 : data.hashCode());
         result = prime * result + ((situacao == null) ? 0 : situacao.hashCode());
+        result = prime * result + numeroParcelas;
+        long temp;
+        temp = Double.doubleToLongBits(valorTotal);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 
@@ -171,10 +179,19 @@ public class Agendamento {
             return false;
         if (quantidade != other.quantidade)
             return false;
+        if (data == null) {
+            if (other.data != null)
+                return false;
+        } else if (!data.equals(other.data))
+            return false;
         if (situacao == null) {
             if (other.situacao != null)
                 return false;
         } else if (!situacao.equals(other.situacao))
+            return false;
+        if (numeroParcelas != other.numeroParcelas)
+            return false;
+        if (Double.doubleToLongBits(valorTotal) != Double.doubleToLongBits(other.valorTotal))
             return false;
         return true;
     }

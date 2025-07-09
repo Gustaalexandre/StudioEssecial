@@ -28,7 +28,7 @@ public class Pagamento {
     private double valor;
 
     @Column(nullable = false)
-    private String formaPagamengo;
+    private String formaPagamento;
 
     @Column(nullable = false)
     private int numeroParcela;
@@ -40,13 +40,13 @@ public class Pagamento {
     public Pagamento() {
     }
 
-    public Pagamento(long id, LocalDate dataPagamento, LocalDate dataVencimento, double valor, String formaPagamengo,
+    public Pagamento(long id, LocalDate dataPagamento, LocalDate dataVencimento, double valor, String formaPagamento,
             int numeroParcela, Agendamento agendamento) {
         this.id = id;
         this.dataPagamento = dataPagamento;
         this.dataVencimento = dataVencimento;
         this.valor = valor;
-        this.formaPagamengo = formaPagamengo;
+        this.formaPagamento = formaPagamento;
         this.numeroParcela = numeroParcela;
         this.agendamento = agendamento;
     }
@@ -67,8 +67,8 @@ public class Pagamento {
         return valor;
     }
 
-    public String getFormaPagamengo() {
-        return formaPagamengo;
+    public String getFormaPagamento() {
+        return formaPagamento;
     }
 
     public int getNumeroParcela() {
@@ -95,8 +95,8 @@ public class Pagamento {
         this.valor = valor;
     }
 
-    public void setFormaPagamengo(String formaPagamengo) {
-        this.formaPagamengo = formaPagamengo;
+    public void setFormaPagamento(String formaPagamento) {
+        this.formaPagamento = formaPagamento;
     }
 
     public void setNumeroParcela(int numeroParcela) {
@@ -117,7 +117,7 @@ public class Pagamento {
         long temp;
         temp = Double.doubleToLongBits(valor);
         result = prime * result + (int) (temp ^ (temp >>> 32));
-        result = prime * result + ((formaPagamengo == null) ? 0 : formaPagamengo.hashCode());
+        result = prime * result + ((formaPagamento == null) ? 0 : formaPagamento.hashCode());
         result = prime * result + numeroParcela;
         result = prime * result + ((agendamento == null) ? 0 : agendamento.hashCode());
         return result;
@@ -146,10 +146,10 @@ public class Pagamento {
             return false;
         if (Double.doubleToLongBits(valor) != Double.doubleToLongBits(other.valor))
             return false;
-        if (formaPagamengo == null) {
-            if (other.formaPagamengo != null)
+        if (formaPagamento == null) {
+            if (other.formaPagamento != null)
                 return false;
-        } else if (!formaPagamengo.equals(other.formaPagamengo))
+        } else if (!formaPagamento.equals(other.formaPagamento))
             return false;
         if (numeroParcela != other.numeroParcela)
             return false;

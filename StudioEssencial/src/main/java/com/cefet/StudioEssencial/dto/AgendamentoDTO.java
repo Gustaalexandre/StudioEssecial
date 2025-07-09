@@ -5,12 +5,13 @@ import java.time.LocalDate;
 import com.cefet.StudioEssencial.entities.Agendamento;
 
 public class AgendamentoDTO {
-
     private Long id;
+    private Long pessoaId;
+    private Long procedimentoId;
+    private String nmProduto;
+    private int quantidade;
     private LocalDate data;
     private String situacao;
-    private long pessoaId;
-    private long procedimentoId;
     private int numeroParcelas;
     private double valorTotal;
 
@@ -19,10 +20,12 @@ public class AgendamentoDTO {
 
     public AgendamentoDTO(Agendamento agendamento) {
         this.id = agendamento.getId();
-        this.data = agendamento.getData();
-        this.situacao = agendamento.getSituacao();
         this.pessoaId = agendamento.getPessoa().getId();
         this.procedimentoId = agendamento.getProcedimento().getId();
+        this.nmProduto = agendamento.getNmProduto();
+        this.quantidade = agendamento.getQuantidade();
+        this.data = agendamento.getData();
+        this.situacao = agendamento.getSituacao();
         this.numeroParcelas = agendamento.getNumeroParcelas();
         this.valorTotal = agendamento.getValorTotal();
     }
@@ -31,20 +34,28 @@ public class AgendamentoDTO {
         return id;
     }
 
+    public Long getPessoaId() {
+        return pessoaId;
+    }
+
+    public Long getProcedimentoId() {
+        return procedimentoId;
+    }
+
+    public String getNmProduto() {
+        return nmProduto;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
     public LocalDate getData() {
         return data;
     }
 
     public String getSituacao() {
         return situacao;
-    }
-
-    public long getPessoaId() {
-        return pessoaId;
-    }
-
-    public long getProcedimentoId() {
-        return procedimentoId;
     }
 
     public int getNumeroParcelas() {

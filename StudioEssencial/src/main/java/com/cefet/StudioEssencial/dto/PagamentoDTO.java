@@ -5,14 +5,13 @@ import java.time.LocalDate;
 import com.cefet.StudioEssencial.entities.Pagamento;
 
 public class PagamentoDTO {
-
-    private long id;
+    private Long id;
     private LocalDate dataPagamento;
     private LocalDate dataVencimento;
     private double valor;
-    private String formaPagamengo;
+    private String formaPagamento;
     private int numeroParcela;
-    private long agendamentoId;
+    private Long agendamentoId;
 
     public PagamentoDTO() {
     }
@@ -22,7 +21,7 @@ public class PagamentoDTO {
         this.dataPagamento = pagamento.getDataPagamento();
         this.dataVencimento = pagamento.getDataVencimento();
         this.valor = pagamento.getValor();
-        this.formaPagamengo = pagamento.getFormaPagamengo();
+        this.formaPagamento = pagamento.getFormaPagamento();
         this.numeroParcela = pagamento.getNumeroParcela();
         this.agendamentoId = pagamento.getAgendamento().getId();
     }
@@ -43,8 +42,8 @@ public class PagamentoDTO {
         return valor;
     }
 
-    public String getFormaPagamengo() {
-        return formaPagamengo;
+    public String getFormaPagamento() {
+        return formaPagamento;
     }
 
     public int getNumeroParcela() {

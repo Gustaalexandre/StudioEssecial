@@ -9,5 +9,4 @@ class StudioEssencialApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
