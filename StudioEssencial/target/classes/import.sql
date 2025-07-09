@@ -12,3 +12,9 @@ INSERT INTO tb_agendamento(pessoa_id, procedimento_id, nm_produto, quantidade, d
 
 -- Pagamentos (OK)
 INSERT INTO tb_pagamento(data_pagamento, data_vencimento, valor, forma_pagamento, numero_parcela, agendamento_id) VALUES ('2025-07-04', '2025-07-04', 40.00, 'DINHEIRO', 1, 1), ('2025-07-04', '2025-07-04', 35.00, 'CARTAO', 1, 2), ('2025-07-05', '2025-07-05', 25.00, 'PIX', 1, 3);
+
+-- Usuários (OK)
+INSERT INTO tb_usuario(login, senha, nivel_acesso, pessoa_id) VALUES ('AAA', '111', 'CLIENTE', 1), ('BBB', '222', 'FUNCIONARIO', 2), ('CCC', '333', 'CLIENTE', 3);
+
+-- Pagamentos
+INSERT INTO tb_pagamento(data_pagamento, data_vencimento, valor, forma_pagamento, numero_parcela, agendamento_id) VALUES ('2025-07-01', '2025-07-04', 40.00, 'DINHEIRO', 1, 1), ('2025-07-04', '2025-07-04', 35.00, 'CARTAO', 1, 2), ('2025-07-05', '2025-07-05', 25.00, 'PIX', 1, 3);
