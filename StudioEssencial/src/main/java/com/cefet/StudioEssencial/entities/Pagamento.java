@@ -55,52 +55,52 @@ public class Pagamento {
         return id;
     }
 
-    public LocalDate getDataPagamento() {
-        return dataPagamento;
-    }
-
-    public LocalDate getDataVencimento() {
-        return dataVencimento;
-    }
-
-    public double getValor() {
-        return valor;
-    }
-
-    public String getFormaPagamento() {
-        return formaPagamento;
-    }
-
-    public int getNumeroParcela() {
-        return numeroParcela;
-    }
-
-    public Agendamento getAgendamento() {
-        return agendamento;
-    }
-
     public void setId(long id) {
         this.id = id;
+    }
+
+    public LocalDate getDataPagamento() {
+        return dataPagamento;
     }
 
     public void setDataPagamento(LocalDate dataPagamento) {
         this.dataPagamento = dataPagamento;
     }
 
+    public LocalDate getDataVencimento() {
+        return dataVencimento;
+    }
+
     public void setDataVencimento(LocalDate dataVencimento) {
         this.dataVencimento = dataVencimento;
+    }
+
+    public double getValor() {
+        return valor;
     }
 
     public void setValor(double valor) {
         this.valor = valor;
     }
 
+    public String getFormaPagamento() {
+        return formaPagamento;
+    }
+
     public void setFormaPagamento(String formaPagamento) {
         this.formaPagamento = formaPagamento;
     }
 
+    public int getNumeroParcela() {
+        return numeroParcela;
+    }
+
     public void setNumeroParcela(int numeroParcela) {
         this.numeroParcela = numeroParcela;
+    }
+
+    public Agendamento getAgendamento() {
+        return agendamento;
     }
 
     public void setAgendamento(Agendamento agendamento) {
