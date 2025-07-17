@@ -22,7 +22,7 @@ public class Pessoa {
     private char sexo;
 
     @Column(nullable = false)
-    private String endereco;
+    private String endereco; 
 
     public Pessoa() {
     }

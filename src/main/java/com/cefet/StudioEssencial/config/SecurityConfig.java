@@ -13,6 +13,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 import com.cefet.StudioEssencial.security.JwtAuthenticationFilter;
 import com.cefet.StudioEssencial.services.UsuarioDetailsService;
 
@@ -30,6 +33,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 // Desabilita verificação CSRF para permitir POST com token JWT
+                .cors()  
+                .and()
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/h2-console/**").permitAll() // Acesso ao H2 Console
@@ -39,7 +44,7 @@ public class SecurityConfig {
                                                                                                               // UI
                         .requestMatchers(HttpMethod.POST, "/usuarios").permitAll() // Permitir criação de usuário
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll() // Permitir endpoint de login
-                        .requestMatchers(HttpMethod.GET, "/pessoas").hasAnyRole("FUNCIONARIO") // Regras de Autorização
+                        .requestMatchers(HttpMethod.GET, "/pessoas").permitAll() // Regras de Autorização
                                                                                                // para
                         // Pessoas
                         .requestMatchers(HttpMethod.GET, "/pessoas/{id}").hasAnyRole("FUNCIONARIO")
@@ -100,5 +105,19 @@ public class SecurityConfig {
         authProvider.setUserDetailsService(usuarioDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
+    }
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedOrigins("http://localhost:4200")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedHeaders("*")
+                        .allowCredentials(true);
+            }
+        };
     }
 }
