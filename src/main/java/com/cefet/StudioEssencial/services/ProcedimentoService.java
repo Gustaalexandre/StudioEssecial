@@ -60,4 +60,8 @@ public class ProcedimentoService {
         }
         procedimentoRepository.deleteById(id);
     }
+
+    public boolean procedimentoExiste(String nome) {
+    return procedimentoRepository.existsByNome(nome);
+}
 }

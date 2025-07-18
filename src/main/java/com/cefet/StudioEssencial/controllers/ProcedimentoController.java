@@ -45,4 +45,10 @@ public class ProcedimentoController {
         procedimentoService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+     @GetMapping("/existe")
+    public ResponseEntity<Boolean> existsByProcedimento(@RequestParam String nomeProcedimento) {
+        boolean existe = procedimentoService.procedimentoExiste(nomeProcedimento);
+        return ResponseEntity.ok(existe);
+    }
 }

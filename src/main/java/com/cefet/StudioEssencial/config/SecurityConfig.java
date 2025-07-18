@@ -57,6 +57,7 @@ public class SecurityConfig {
                                                                                                      // Autorização para
                         // Procedimentos
                         .requestMatchers(HttpMethod.GET, "/procedimentos/{id}").hasAnyRole("FUNCIONARIO", "CLIENTE")
+                        .requestMatchers(HttpMethod.GET, "/procedimentos/existe").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.POST, "/procedimentos").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.PUT, "/procedimentos/**").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.DELETE, "/procedimentos/**").hasAnyRole("FUNCIONARIO")
