@@ -44,7 +44,7 @@ public class SecurityConfig {
                                                                                                               // Swagger
                                                                                                               // UI
                         .requestMatchers(HttpMethod.POST, "/usuarios").permitAll() // Permitir criação de usuário
-                        .requestMatchers(HttpMethod.GET, "/usuarios/existe").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/usuarios/existe").permitAll()//Permite a todos verificar a existencia do usuario
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll() // Permitir endpoint de login
                         .requestMatchers(HttpMethod.GET, "/pessoas").permitAll() // Regras de Autorização
                                                                                                // para
