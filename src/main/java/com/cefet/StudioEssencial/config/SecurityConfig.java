@@ -50,7 +50,7 @@ public class SecurityConfig {
                                                                                                // para
                         // Pessoas
                         .requestMatchers(HttpMethod.GET, "/pessoas/{id}").hasAnyRole("FUNCIONARIO")
-                        .requestMatchers(HttpMethod.POST, "/pessoas").hasAnyRole("FUNCIONARIO")
+                        .requestMatchers(HttpMethod.POST, "/pessoas").permitAll()
                         .requestMatchers(HttpMethod.PUT, "/pessoas/**").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.DELETE, "/pessoas/**").hasRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.GET, "/procedimentos").hasAnyRole("FUNCIONARIO") // Regras de
