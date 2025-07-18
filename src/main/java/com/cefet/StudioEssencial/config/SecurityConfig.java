@@ -1,6 +1,7 @@
 package com.cefet.StudioEssencial.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.graphql.GraphQlProperties.Http;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -43,6 +44,7 @@ public class SecurityConfig {
                                                                                                               // Swagger
                                                                                                               // UI
                         .requestMatchers(HttpMethod.POST, "/usuarios").permitAll() // Permitir criação de usuário
+                        .requestMatchers(HttpMethod.GET, "/usuarios/existe").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll() // Permitir endpoint de login
                         .requestMatchers(HttpMethod.GET, "/pessoas").permitAll() // Regras de Autorização
                                                                                                // para
