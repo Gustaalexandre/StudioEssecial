@@ -3,11 +3,12 @@ package com.cefet.StudioEssencial.dto;
 import java.time.LocalDate;
 
 import com.cefet.StudioEssencial.entities.Agendamento;
+import com.cefet.StudioEssencial.entities.Pessoa;
 
 public class AgendamentoDTO {
     private Long id;
-    private Long clienteId;
-    private Long funcionarioId;
+    private Pessoa cliente;
+    private Pessoa funcionario;
     private Long procedimentoId;
     private LocalDate data;
     private String situacao;
@@ -19,9 +20,9 @@ public class AgendamentoDTO {
 
     public AgendamentoDTO(Agendamento agendamento) {
         this.id = agendamento.getId();
-        this.funcionarioId = agendamento.getFuncionario().getId();
+        this.funcionario = agendamento.getFuncionario();
         this.procedimentoId = agendamento.getProcedimento().getId();
-        this.clienteId = agendamento.getCliente().getId();
+        this.cliente = agendamento.getCliente();
         this.data = agendamento.getData();
         this.situacao = agendamento.getSituacao();
         this.numeroParcelas = agendamento.getNumeroParcelas();
@@ -32,12 +33,12 @@ public class AgendamentoDTO {
         return id;
     }
 
-    public Long getClienteId() {
-        return clienteId;
+    public Pessoa getCliente() {
+        return cliente;
     }
 
-    public Long getFuncionarioId() {
-        return funcionarioId;
+    public Pessoa getFuncionario() {
+        return funcionario;
     }
 
     public Long getProcedimentoId() {

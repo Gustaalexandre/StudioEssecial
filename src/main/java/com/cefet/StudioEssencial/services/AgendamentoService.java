@@ -45,16 +45,9 @@ public class AgendamentoService {
                 agendamento.setNumeroParcelas(agendamentoDTO.getNumeroParcelas());
                 agendamento.setValorTotal(agendamentoDTO.getValorTotal());
 
-                agendamento.setCliente(
-                                pessoaRepository.findById(agendamentoDTO.getClienteId())
-                                                .orElseThrow(() -> new EntityNotFoundException(
-                                                                "Pessoa não encontrada com ID: "
-                                                                                + agendamentoDTO.getClienteId())));
-                agendamento.setFuncionario(
-                                pessoaRepository.findById(agendamentoDTO.getFuncionarioId())
-                                                .orElseThrow(() -> new EntityNotFoundException(
-                                                                "Pessoa não encontrada com ID: "
-                                                                                + agendamentoDTO.getFuncionarioId())));
+                // Agora recebe os objetos Pessoa diretamente do DTO
+                agendamento.setCliente(agendamentoDTO.getCliente());
+                agendamento.setFuncionario(agendamentoDTO.getFuncionario());
 
                 agendamento.setProcedimento(
                                 procedimentoRepository.findById(agendamentoDTO.getProcedimentoId())
@@ -66,7 +59,6 @@ public class AgendamentoService {
                 return new AgendamentoDTO(agendamentoSalvo);
         }
 
-        // Atualizar Agendamento
         public AgendamentoDTO update(Long id, AgendamentoDTO novoAgendamentoDTO) {
                 Agendamento agendamento = agendamentoRepository.findById(id)
                                 .orElseThrow(() -> new EntityNotFoundException(
@@ -76,23 +68,17 @@ public class AgendamentoService {
                 agendamento.setNumeroParcelas(novoAgendamentoDTO.getNumeroParcelas());
                 agendamento.setValorTotal(novoAgendamentoDTO.getValorTotal());
 
-                agendamento.setCliente(
-                                pessoaRepository.findById(novoAgendamentoDTO.getClienteId())
-                                                .orElseThrow(() -> new EntityNotFoundException(
-                                                                "Pessoa não encontrada com ID: "
-                                                                                + novoAgendamentoDTO.getClienteId())));
-                agendamento.setFuncionario(
-                                pessoaRepository.findById(novoAgendamentoDTO.getFuncionarioId())
-                                                .orElseThrow(() -> new EntityNotFoundException(
-                                                                "Pessoa não encontrada com ID: "
-                                                                                + novoAgendamentoDTO
-                                                                                                .getFuncionarioId())));
+                // Agora recebe os objetos Pessoa diretamente do DTO
+                agendamento.setCliente(novoAgendamentoDTO.getCliente());
+                agendamento.setFuncionario(novoAgendamentoDTO.getFuncionario());
+
                 agendamento.setProcedimento(
                                 procedimentoRepository.findById(novoAgendamentoDTO.getProcedimentoId())
                                                 .orElseThrow(() -> new EntityNotFoundException(
                                                                 "Procedimento não encontrado com ID: "
                                                                                 + novoAgendamentoDTO
                                                                                                 .getProcedimentoId())));
+
                 Agendamento atualizado = agendamentoRepository.save(agendamento);
                 return new AgendamentoDTO(atualizado);
         }
