@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cefet.StudioEssencial.dto.UsuarioCreateDTO;
 import com.cefet.StudioEssencial.dto.UsuarioDTO;
+import com.cefet.StudioEssencial.entities.NivelAcesso;
 import com.cefet.StudioEssencial.services.UsuarioService;
 
 @RestController
@@ -35,7 +36,7 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public List<UsuarioDTO> listarUsuarios(){
+    public List<UsuarioDTO> listarUsuarios() {
         return usuarioService.listarUsuarios().stream().map(UsuarioDTO::new).toList();
     }
 
@@ -44,4 +45,6 @@ public class UsuarioController {
         boolean existe = usuarioService.existsByLogin(login);
         return ResponseEntity.ok(existe);
     }
+
+ 
 }

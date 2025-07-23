@@ -38,20 +38,24 @@ public class AgendamentoService {
                 return new AgendamentoDTO(agendamento);
         }
 
-        // inserir
         public AgendamentoDTO insert(AgendamentoDTO agendamentoDTO) {
                 Agendamento agendamento = new Agendamento();
                 agendamento.setData(agendamentoDTO.getData());
                 agendamento.setSituacao(agendamentoDTO.getSituacao());
                 agendamento.setNumeroParcelas(agendamentoDTO.getNumeroParcelas());
                 agendamento.setValorTotal(agendamentoDTO.getValorTotal());
-                agendamento.setNmProduto(agendamentoDTO.getNmProduto());
-                agendamento.setQuantidade(agendamentoDTO.getQuantidade());
-                agendamento.setPessoa(
-                                pessoaRepository.findById(agendamentoDTO.getPessoaId())
+
+                agendamento.setCliente(
+                                pessoaRepository.findById(agendamentoDTO.getClienteId())
                                                 .orElseThrow(() -> new EntityNotFoundException(
                                                                 "Pessoa não encontrada com ID: "
-                                                                                + agendamentoDTO.getPessoaId())));
+                                                                                + agendamentoDTO.getClienteId())));
+                agendamento.setFuncionario(
+                                pessoaRepository.findById(agendamentoDTO.getFuncionarioId())
+                                                .orElseThrow(() -> new EntityNotFoundException(
+                                                                "Pessoa não encontrada com ID: "
+                                                                                + agendamentoDTO.getFuncionarioId())));
+
                 agendamento.setProcedimento(
                                 procedimentoRepository.findById(agendamentoDTO.getProcedimentoId())
                                                 .orElseThrow(() -> new EntityNotFoundException(
@@ -71,14 +75,18 @@ public class AgendamentoService {
                 agendamento.setSituacao(novoAgendamentoDTO.getSituacao());
                 agendamento.setNumeroParcelas(novoAgendamentoDTO.getNumeroParcelas());
                 agendamento.setValorTotal(novoAgendamentoDTO.getValorTotal());
-                agendamento.setNmProduto(novoAgendamentoDTO.getNmProduto());
-                agendamento.setQuantidade(novoAgendamentoDTO.getQuantidade());
 
-                agendamento.setPessoa(
-                                pessoaRepository.findById(novoAgendamentoDTO.getPessoaId())
+                agendamento.setCliente(
+                                pessoaRepository.findById(novoAgendamentoDTO.getClienteId())
                                                 .orElseThrow(() -> new EntityNotFoundException(
                                                                 "Pessoa não encontrada com ID: "
-                                                                                + novoAgendamentoDTO.getPessoaId())));
+                                                                                + novoAgendamentoDTO.getClienteId())));
+                agendamento.setFuncionario(
+                                pessoaRepository.findById(novoAgendamentoDTO.getFuncionarioId())
+                                                .orElseThrow(() -> new EntityNotFoundException(
+                                                                "Pessoa não encontrada com ID: "
+                                                                                + novoAgendamentoDTO
+                                                                                                .getFuncionarioId())));
                 agendamento.setProcedimento(
                                 procedimentoRepository.findById(novoAgendamentoDTO.getProcedimentoId())
                                                 .orElseThrow(() -> new EntityNotFoundException(
@@ -103,7 +111,7 @@ public class AgendamentoService {
                                 .orElseThrow(() -> new EntityNotFoundException(
                                                 "Pessoa não encontrada com ID: " + pessoaId));
                 return agendamentoRepository.findAll().stream()
-                                .filter(a -> a.getPessoa().equals(pessoa))
+                                .filter(a -> a.getCliente().equals(pessoa))
                                 .map(AgendamentoDTO::new)
                                 .toList();
         }

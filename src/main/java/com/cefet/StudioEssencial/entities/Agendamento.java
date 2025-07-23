@@ -20,18 +20,16 @@ public class Agendamento {
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "pessoaId")
-    private Pessoa pessoa;
+    @JoinColumn(name = "funcionarioId")
+    private Pessoa funcionario;
+
+    @ManyToOne
+    @JoinColumn(name = "clienteId")
+    private Pessoa cliente;
 
     @ManyToOne
     @JoinColumn(name = "procedimentoId")
     private Procedimento procedimento;
-
-    @Column(nullable = false)
-    private String nmProduto;
-
-    @Column(nullable = false)
-    private int quantidade;
 
     @Column(nullable = false)
     private LocalDate data;
@@ -48,13 +46,13 @@ public class Agendamento {
     public Agendamento() {
     }
 
-    public Agendamento(long id, Pessoa pessoa, Procedimento procedimento, String nmProduto, int quantidade,
+    public Agendamento(long id, Pessoa cliente, Pessoa funcionario, Procedimento procedimento, String nmProduto,
+            int quantidade,
             LocalDate data, String situacao, int numeroParcelas, double valorTotal) {
         this.id = id;
-        this.pessoa = pessoa;
+        this.cliente = cliente;
+        this.funcionario = funcionario;
         this.procedimento = procedimento;
-        this.nmProduto = nmProduto;
-        this.quantidade = quantidade;
         this.data = data;
         this.situacao = situacao;
         this.numeroParcelas = numeroParcelas;
@@ -69,12 +67,20 @@ public class Agendamento {
         this.id = id;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
+    public Pessoa getCliente() {
+        return cliente;
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
+    public void setCliente(Pessoa cliente) {
+        this.cliente = cliente;
+    }
+
+    public Pessoa getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Pessoa funcionario) {
+        this.funcionario = funcionario;
     }
 
     public Procedimento getProcedimento() {
@@ -83,22 +89,6 @@ public class Agendamento {
 
     public void setProcedimento(Procedimento procedimento) {
         this.procedimento = procedimento;
-    }
-
-    public String getNmProduto() {
-        return nmProduto;
-    }
-
-    public void setNmProduto(String nmProduto) {
-        this.nmProduto = nmProduto;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
     }
 
     public LocalDate getData() {
@@ -138,10 +128,9 @@ public class Agendamento {
         final int prime = 31;
         int result = 1;
         result = prime * result + (int) (id ^ (id >>> 32));
-        result = prime * result + ((pessoa == null) ? 0 : pessoa.hashCode());
+        result = prime * result + ((funcionario == null) ? 0 : funcionario.hashCode());
+        result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
         result = prime * result + ((procedimento == null) ? 0 : procedimento.hashCode());
-        result = prime * result + ((nmProduto == null) ? 0 : nmProduto.hashCode());
-        result = prime * result + quantidade;
         result = prime * result + ((data == null) ? 0 : data.hashCode());
         result = prime * result + ((situacao == null) ? 0 : situacao.hashCode());
         result = prime * result + numeroParcelas;
@@ -162,22 +151,20 @@ public class Agendamento {
         Agendamento other = (Agendamento) obj;
         if (id != other.id)
             return false;
-        if (pessoa == null) {
-            if (other.pessoa != null)
+        if (funcionario == null) {
+            if (other.funcionario != null)
                 return false;
-        } else if (!pessoa.equals(other.pessoa))
+        } else if (!funcionario.equals(other.funcionario))
+            return false;
+        if (cliente == null) {
+            if (other.cliente != null)
+                return false;
+        } else if (!cliente.equals(other.cliente))
             return false;
         if (procedimento == null) {
             if (other.procedimento != null)
                 return false;
         } else if (!procedimento.equals(other.procedimento))
-            return false;
-        if (nmProduto == null) {
-            if (other.nmProduto != null)
-                return false;
-        } else if (!nmProduto.equals(other.nmProduto))
-            return false;
-        if (quantidade != other.quantidade)
             return false;
         if (data == null) {
             if (other.data != null)
@@ -195,4 +182,5 @@ public class Agendamento {
             return false;
         return true;
     }
+
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.cefet.StudioEssencial.dto.UsuarioCreateDTO;
 import com.cefet.StudioEssencial.dto.UsuarioDTO;
+import com.cefet.StudioEssencial.entities.NivelAcesso;
 import com.cefet.StudioEssencial.entities.Pessoa;
 import com.cefet.StudioEssencial.entities.Usuario;
 import com.cefet.StudioEssencial.repositories.PessoaRepository;
@@ -49,4 +50,6 @@ public class UsuarioService {
     public boolean existsByLogin(String login) {
         return usuarioRepository.existsByLogin(login);
     }
+
+
 }

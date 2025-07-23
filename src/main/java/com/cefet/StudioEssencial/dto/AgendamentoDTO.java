@@ -6,10 +6,9 @@ import com.cefet.StudioEssencial.entities.Agendamento;
 
 public class AgendamentoDTO {
     private Long id;
-    private Long pessoaId;
+    private Long clienteId;
+    private Long funcionarioId;
     private Long procedimentoId;
-    private String nmProduto;
-    private int quantidade;
     private LocalDate data;
     private String situacao;
     private int numeroParcelas;
@@ -20,10 +19,9 @@ public class AgendamentoDTO {
 
     public AgendamentoDTO(Agendamento agendamento) {
         this.id = agendamento.getId();
-        this.pessoaId = agendamento.getPessoa().getId();
+        this.funcionarioId = agendamento.getFuncionario().getId();
         this.procedimentoId = agendamento.getProcedimento().getId();
-        this.nmProduto = agendamento.getNmProduto();
-        this.quantidade = agendamento.getQuantidade();
+        this.clienteId = agendamento.getCliente().getId();
         this.data = agendamento.getData();
         this.situacao = agendamento.getSituacao();
         this.numeroParcelas = agendamento.getNumeroParcelas();
@@ -34,20 +32,16 @@ public class AgendamentoDTO {
         return id;
     }
 
-    public Long getPessoaId() {
-        return pessoaId;
+    public Long getClienteId() {
+        return clienteId;
+    }
+
+    public Long getFuncionarioId() {
+        return funcionarioId;
     }
 
     public Long getProcedimentoId() {
         return procedimentoId;
-    }
-
-    public String getNmProduto() {
-        return nmProduto;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
     }
 
     public LocalDate getData() {
@@ -65,4 +59,5 @@ public class AgendamentoDTO {
     public double getValorTotal() {
         return valorTotal;
     }
+
 }
