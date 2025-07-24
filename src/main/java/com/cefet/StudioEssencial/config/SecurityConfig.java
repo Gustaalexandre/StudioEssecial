@@ -54,7 +54,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/pessoas").permitAll()
                         .requestMatchers(HttpMethod.PUT, "/pessoas/**").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.DELETE, "/pessoas/**").hasRole("FUNCIONARIO")
-                        .requestMatchers(HttpMethod.GET, "/procedimentos").hasAnyRole("FUNCIONARIO") // Regras de
+                        .requestMatchers(HttpMethod.GET, "/procedimentos").hasAnyRole("FUNCIONARIO", "CLIENTE") // Regras de
                                                                                                      // Autorização para
                         // Procedimentos
                         .requestMatchers(HttpMethod.GET, "/procedimentos/{id}").hasAnyRole("FUNCIONARIO", "CLIENTE")
@@ -69,12 +69,12 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/telefones").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.PUT, "/telefones/**").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.DELETE, "/telefones/**").hasAnyRole("FUNCIONARIO")
-                        .requestMatchers(HttpMethod.GET, "/agendamentos").hasAnyRole("FUNCIONARIO") // Regras de
+                        .requestMatchers(HttpMethod.GET, "/agendamentos").hasAnyRole("FUNCIONARIO", "CLIENTE") // Regras de
                                                                                                     // Autorização para
                         // Agendamentos
-                        .requestMatchers(HttpMethod.GET, "/agendamentos{id}").hasAnyRole("FUNCIONARIO")
-                        .requestMatchers(HttpMethod.POST, "/agendamentos").hasAnyRole("FUNCIONARIO")
-                        .requestMatchers(HttpMethod.PUT, "/agendamentos/**").hasAnyRole("FUNCIONARIO")
+                        .requestMatchers(HttpMethod.GET, "/agendamentos{id}").hasAnyRole("FUNCIONARIO", "CLIENTE")
+                        .requestMatchers(HttpMethod.POST, "/agendamentos").hasAnyRole("FUNCIONARIO", "CLIENTE")
+                        .requestMatchers(HttpMethod.PUT, "/agendamentos/**").hasAnyRole("FUNCIONARIO", "CLIENTE")
                         .requestMatchers(HttpMethod.DELETE, "/agendamentos/**").hasAnyRole("FUNCIONARIO")
                         .requestMatchers(HttpMethod.GET, "/pagamentos").hasAnyRole("FUNCIONARIO") // Regras de
                                                                                                   // Autorização para
