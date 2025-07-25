@@ -33,6 +33,7 @@ public class PagamentoService {
     }
 
     // Inserir Pagamento
+    // ...existing code...
     public PagamentoDTO insert(PagamentoDTO pagamentoDTO) {
         Agendamento agendamento = agendamentoRepository.findById(pagamentoDTO.getAgendamentoId())
                 .orElseThrow(() -> new EntityNotFoundException(
@@ -40,9 +41,14 @@ public class PagamentoService {
         Pagamento pagamento = new Pagamento();
         pagamento.setAgendamento(agendamento);
         pagamento.setValor(pagamentoDTO.getValor());
+        pagamento.setDataPagamento(pagamentoDTO.getDataPagamento());
+        pagamento.setDataVencimento(pagamentoDTO.getDataVencimento());
+        pagamento.setFormaPagamento(pagamentoDTO.getFormaPagamento());
+        pagamento.setNumeroParcela(pagamentoDTO.getNumeroParcela());
         Pagamento pagamentoSalvo = pagamentoRepository.save(pagamento);
         return new PagamentoDTO(pagamentoSalvo);
     }
+    // ...existing code...
 
     // Atualizar Pagamento
     public PagamentoDTO update(Long id, PagamentoDTO novoPagamentoDTO) {
@@ -53,6 +59,9 @@ public class PagamentoService {
                         "Agendamento não encontrado com ID: " + novoPagamentoDTO.getAgendamentoId()));
         pagamento.setAgendamento(agendamento);
         pagamento.setValor(novoPagamentoDTO.getValor());
+        pagamento.setDataVencimento(novoPagamentoDTO.getDataVencimento());
+        pagamento.setFormaPagamento(novoPagamentoDTO.getFormaPagamento());
+        pagamento.setNumeroParcela(novoPagamentoDTO.getNumeroParcela());
         Pagamento atualizado = pagamentoRepository.save(pagamento);
         return new PagamentoDTO(atualizado);
     }
